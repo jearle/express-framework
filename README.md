@@ -57,3 +57,24 @@ will respond with the "This is Jesse Earle's Page!" in the browser.
 
   Furthermore http://jesseearle.com/jesse-earle/favorite-programming-languages
 will respond with "Objective-c<br>JavaScript".
+
+### The $route Parameter
+
+  You may have noticed the $route parameter seems to just magically work. Using
+a system similiar to Angular.js' dependency injection the parameters of the
+controller function are read and passed into the function with meaning.  The
+routes contained in the ['/my-route'] act exactly the same as they in express.
+
+  For example:
+
+```js
+module.exports = function Base($route){
+  
+  $route.get['/:name'] = function(req, res){
+    res.send('hello ' + req.params.name '!');
+  };
+
+};
+```
+
+  The response for http://jesseearle.com/fred would be "hello fred!".
