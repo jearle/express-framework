@@ -63,7 +63,7 @@ will respond with "Objective-c<br>JavaScript".
   You may have noticed the $route parameter seems to just magically work. Using
 a system similiar to Angular.js' dependency injection the parameters of the
 controller function are read and passed into the function with meaning.  The
-routes contained in the ['/my-route'] act exactly the same as they in express.
+routes contained in the ['/my-route'] act just like they do in express.
 
   For example:
 
