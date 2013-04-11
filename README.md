@@ -28,5 +28,32 @@ function Base($route) has somewhat of a special meaning.  Base is a
 reserved controller name which refers to the base/root/index of a 
 URI.  For example if you are running the server from
 jesseearle.com,  the Base controller would route res.send('hello')
-to http://jesseearle.com/.  This all happens automatically in the
-background.
+to http://jesseearle.com/.  This all happens automatically.
+
+  Let look at a more complicated example:
+
+```js
+module.exports = function JesseEarle($route){
+  
+  $route.get['/'] = function(req, res){
+    res.send('This is Jesse Earle\'s page!');
+  };
+
+  $route.get['/favorite-programming-languages'] = function(req, res){
+    var languages = "Objective-c<br>JavaScript";
+    res.send(languages);
+  };
+
+};
+```
+
+  As you may have noticed the preferred style for URI schemes is snake
+case.
+
+  As in the case of the simple Base controller, the name of the controller
+is relevant.  In this case JesseEarle will be converted into snake case and
+the final URI would look like this http://jesseearle.com/jesse-earle which
+will respond with the "This is Jesse Earle's Page!" in the browser.
+
+  Furthermore http://jesseearle.com/jesse-earle/favorite-programming-languages
+will respond with "Objective-c<br>JavaScript".
