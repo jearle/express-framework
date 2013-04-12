@@ -1,14 +1,12 @@
-
-/**
- * Module dependencies.
- */
+if (!process.env.NODE_ENV){
+  process.env.NODE_ENV = 'development';
+}
 
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , base = require('./controllers/base')
   , lib = require('./lib');
 
 var app = express();
@@ -36,8 +34,7 @@ lib.set('app', app);
 lib.set('controllersDir', path.join(__dirname, './controllers'))
 lib.set('modelsDir', path.join(__dirname, './models'))
 
-// lib.injectController(base);
-
+lib.injectAllModels();
 lib.injectAllControllers();
 
 http.createServer(app).listen(app.get('port'), function(){
