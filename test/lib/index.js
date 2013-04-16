@@ -1,10 +1,16 @@
 var should = require('should')
-  , lib = require('../lib')
+  , lib = require('../../lib')
   , express = require('express')
   , http = require('http')
+  , model = require('../../lib/model')
   , app = express();
 
 describe('lib', function(){
+
+  before(function(){
+    lib.set('app', app);
+    lib.set('Model', model);
+  });
   
   describe('#toSnakeCase()', function(){
     it('should convert JesseEarle to jesse-earle', function(){
@@ -80,7 +86,6 @@ describe('lib', function(){
 
   describe('#setAppRoutes()', function(){
     it('should contain a get route of "/" pointing to the same callback', function(done){
-      lib.set('app', app);
       var mockRoutes = {
         get: {
           '/': function(req, res){}
@@ -100,7 +105,6 @@ describe('lib', function(){
     });
 
     it('should contain a get route of "/test" pointing to the same callback', function(done){
-      lib.set('app', app);
       var mockRoutes = {
         get: {
           '/': function(req, res){}

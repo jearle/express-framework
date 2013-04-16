@@ -31,6 +31,11 @@ app.configure('development', function(){
 });
 
 lib.set('app', app);
+
+var model = require('./lib/model');
+lib.set('Model', model);
+model.connect();
+
 lib.set('controllersDir', path.join(__dirname, './controllers'))
 lib.set('modelsDir', path.join(__dirname, './models'))
 
