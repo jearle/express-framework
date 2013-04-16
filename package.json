@@ -10,7 +10,8 @@
     "jade": "*",
     "stylus": "*",
     "mongoose": "3.6.4",
-    "bcrypt": "0.7.5"
+    "bcrypt": "0.7.5",
+    "connect-redis": "1.4.5"
   },
   "devDependencies": {
     "mocha": "1.9.0",
