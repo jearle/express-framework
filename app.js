@@ -7,7 +7,9 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , lib = require('./lib');
+  , lib = require('./lib')
+  , RedisStore = require('connect-redis')(express)
+  , sessionStore = new RedisStore();
 
 var app = express();
 
@@ -20,7 +22,11 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser('your secret here'));
-  app.use(express.session());
+  app.use(express.session({
+    secret: 'express-framework',
+    store: sessionStore,
+    key: 'cookies.sid'
+  }));
   app.use(app.router);
   app.use(require('stylus').middleware(__dirname + '/public'));
   app.use(express.static(path.join(__dirname, 'public')));
