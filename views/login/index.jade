@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  .container-fluid
+    .row-fluid
+      .span12
+        h1= title
+
+        form.form-horizontal(action="/login", method="post")
+          .control-group
+            label.control-label(for="email") Email/Username
+            .controls
+              input(type="text", id="email", placeholder="Email/Username")
+
+          .control-group
+            label.control-label(for="password") Password
+            .controls
+              input(type="text", id="password", placeholder="Password")
+          .control-group
+            .controls
+              button(type="submit").btn Login
